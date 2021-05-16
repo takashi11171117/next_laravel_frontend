@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { useAuth } from '@/hooks/auth'
+import { useAuth } from '@/hooks/authTeacher'
 import Label from '@/components/Label'
 import Input from '@/components/Input'
 import Button from '@/components/Button'

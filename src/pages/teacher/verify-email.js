@@ -4,7 +4,6 @@ import { useAuth } from '@/hooks/authTeacher'
 import Button from '@/components/Button'
 import AuthCard from '@/components/AuthCard'
 import GuestLayout from '@/components/Layouts/GuestLayout'
-import ApplicationLogo from '@/components/ApplicationLogo'
 
 const VerifyEmail = () => {
     const { logout, resendEmailVerification } = useAuth({
@@ -18,9 +17,7 @@ const VerifyEmail = () => {
             <AuthCard
                 logo={
                     <Link href="/">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
+                        <a>Sample</a>
                     </Link>
                 }>
 

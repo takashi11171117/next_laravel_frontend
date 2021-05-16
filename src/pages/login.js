@@ -6,7 +6,6 @@ import { useAuth } from '@/hooks/auth'
 import Button from '@/components/Button'
 import AuthCard from '@/components/AuthCard'
 import GuestLayout from '@/components/Layouts/GuestLayout'
-import ApplicationLogo from '@/components/ApplicationLogo'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import AuthValidationErrors from '@/components/AuthValidationErrors'
 
