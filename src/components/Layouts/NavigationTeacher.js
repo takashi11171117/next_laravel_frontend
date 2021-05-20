@@ -39,6 +39,11 @@ const NavigationTeacher = ({ user }) => {
                                 }>
                                 Dashboard
                             </NavLink>
+                            <NavLink
+                                href="/teacher/videos"
+                                active={router.pathname == '/teacher/videos'}>
+                                Videos
+                            </NavLink>
                         </div>
                     </div>
 
@@ -65,7 +70,6 @@ const NavigationTeacher = ({ user }) => {
                                     </div>
                                 </button>
                             }>
-
                             {/* Authentication */}
                             <DropdownButton onClick={logout}>
                                 Logout
@@ -111,8 +115,13 @@ const NavigationTeacher = ({ user }) => {
                 <div className="block sm:hidden">
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            href="/dashboard'"
+                            href="/teacher/dashboard'"
                             active={router.pathname == '/teacher/dashboard'}>
+                            Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href="/teacher/videos'"
+                            active={router.pathname == '/teacher/videos'}>
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
