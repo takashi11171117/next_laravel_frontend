@@ -11,6 +11,7 @@ export const useAuth = ({ middleware } = {}) => {
             .get('/api/user')
             .then(res => res.data)
             .catch(error => {
+              console.log('test')
                 if (error.response.status != 409) throw error
 
                 router.push('/verify-email')

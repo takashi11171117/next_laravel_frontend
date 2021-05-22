@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Head from 'next/head'
+import GuestLayout from '@/components/Layouts/GuestLayout'
 
 export default function Home() {
     return (
@@ -7,20 +7,17 @@ export default function Home() {
             <Head>
                 <title>Laravel</title>
             </Head>
-
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    <Link href="/login">
-                        <a className="text-sm text-gray-700 underline">Login</a>
-                    </Link>
-
-                    <Link href="/register">
-                        <a className="ml-4 text-sm text-gray-700 underline">
-                            Register
-                        </a>
-                    </Link>
+            <GuestLayout>
+                <div className="py-12">
+                    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div className="p-6 bg-white border-b border-gray-200">
+                                You're logged in!
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </GuestLayout>
         </>
     )
 }
