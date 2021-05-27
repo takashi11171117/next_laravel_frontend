@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react'
+import { useAuth } from '@/hooks/authTeacher'
 import AppLayout from '@/components/Layouts/AppTeacherLayout'
 import { useVideo } from '@/hooks/video'
 import tw, { styled } from 'twin.macro'
 
 const Videos = () => {
     const { fetchVideos } = useVideo()
+    const { user } = useAuth()
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
         const f = async () => {
-            const videos = await fetchVideos()
-            console.log(videos.data)
-            setVideos(videos.data)
+            if (user !== null) {
+                const videos = await fetchVideos(user.name)
+                console.log(videos.data)
+                setVideos(videos.data)
+            }
         }
         f()
-    }, [])
+    }, [user])
 
     return (
         <AppLayout header={<HeaderHeadline>Videos</HeaderHeadline>}>
