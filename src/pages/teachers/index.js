@@ -22,10 +22,10 @@ export default function Home() {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Home</HeaderHeadline>}>
+      <GuestLayout header={<HeaderHeadline>Teachers</HeaderHeadline>}>
         <Content>
           <Card>
-            <h2 className="pb-3 text-lg">Popular Teachers</h2>
+            <h2 className="pb-3 text-lg">All Teachers</h2>
             <Grid>
               {teachers.map((teacher) => {
                 return (
