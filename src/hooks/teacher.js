@@ -13,7 +13,18 @@ export const useTeacher = () => {
     return teachers.data
   }
 
+  const fetchTeacher = async (name) => {
+    await csrf()
+
+    const teacher = await axios.get(`/api/teacher/${name}`).catch((error) => {
+      if (error.response.status != 422) throw error
+    })
+
+    return teacher.data.data
+  }
+
   return {
-    fetchTeachers
+    fetchTeachers,
+    fetchTeacher
   }
 }

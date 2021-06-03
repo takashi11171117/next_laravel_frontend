@@ -1,21 +1,12 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useTeacher } from '@/hooks/teacher'
 import GuestLayout from '@/components/Layouts/GuestLayout'
+import Pagination from '@/components/Pagination'
 import tw, { styled } from 'twin.macro'
 
-export default function Home() {
-  const { fetchTeachers } = useTeacher()
-  const [teachers, setTeachers] = useState([])
-
-  useEffect(() => {
-    const f = async () => {
-      const videos = await fetchTeachers()
-      console.log(videos.data)
-      setTeachers(videos.data)
-    }
-    f()
-  }, [])
+export default function TeachersHome({ teachers }) {
+  const router = useRouter()
 
   return (
     <>
@@ -26,23 +17,46 @@ export default function Home() {
         <Content>
           <Card>
             <h2 className="pb-3 text-lg">All Teachers</h2>
-            <Grid>
-              {teachers.map((teacher) => {
-                return (
-                  <div key={teacher.id}>
-                    <div>
-                      <img src={teacher.image} />
-                    </div>
-                    <p>{teacher.name}</p>
-                  </div>
-                )
-              })}
-            </Grid>
+            {teachers?.data === undefined ? (
+              <p>ロード中です。</p>
+            ) : (
+              <>
+                <Grid>
+                  {teachers.data.map((teacher) => {
+                    return (
+                      <div key={teacher.id}>
+                        <div>
+                          <img src={teacher.image} />
+                        </div>
+                        <p>{teacher.name}</p>
+                      </div>
+                    )
+                  })}
+                </Grid>
+                <Pagination
+                  containerClass={'inline-flex mt-6 items-center'}
+                  prevButtonClass={'pr-2 mr-1'}
+                  numberButtonClass={'p-2 mr-3 bg-gray-200'}
+                  paginationData={teachers}
+                  changePage={({ page }) => router.push(`/teachers/page/${page}`)}
+                />
+              </>
+            )}
           </Card>
         </Content>
       </GuestLayout>
     </>
   )
+}
+
+export const getStaticProps = async () => {
+  const { fetchTeachers } = useTeacher()
+  const teachers = await fetchTeachers()
+
+  return {
+    props: { teachers },
+    revalidate: 1
+  }
 }
 
 const HeaderHeadline = styled.div`

@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useTeacher } from '@/hooks/teacher'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import Pagination from '@/components/Pagination'
 import tw, { styled } from 'twin.macro'
 
-export default function Home({ teachers }) {
-  const router = useRouter()
-
+export default function Teachers({ teachers }) {
   return (
     <>
       <Head>
@@ -24,12 +22,16 @@ export default function Home({ teachers }) {
                 <Grid>
                   {teachers.data.map((teacher) => {
                     return (
-                      <div key={teacher.id}>
-                        <div>
-                          <img src={teacher.image} />
-                        </div>
-                        <p>{teacher.name}</p>
-                      </div>
+                      <Link href={`/teacher/${teacher.name}`}>
+                        <a>
+                          <div key={teacher.id}>
+                            <div>
+                              <img src={teacher.image} />
+                            </div>
+                            <p>{teacher.name}</p>
+                          </div>
+                        </a>
+                      </Link>
                     )
                   })}
                 </Grid>
