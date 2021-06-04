@@ -13,7 +13,18 @@ export const useVideo = () => {
     return videos.data
   }
 
+  const fetchVideo = async (id) => {
+    await csrf()
+
+    const video = await axios.get(`/api/video/${id}`).catch((error) => {
+      if (error.response.status != 422) throw error
+    })
+
+    return video.data.data
+  }
+
   return {
-    fetchVideos
+    fetchVideos,
+    fetchVideo
   }
 }

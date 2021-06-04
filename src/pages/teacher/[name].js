@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useTeacher } from '@/hooks/teacher'
 import { useVideo } from '@/hooks/video'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import tw, { styled } from 'twin.macro'
 
 export default function Teacher({ videos, teacher }) {
-  const router = useRouter()
-
   return (
     <>
       <Head>
@@ -28,6 +26,7 @@ export default function Teacher({ videos, teacher }) {
                       <TH />
                       <TH>Vimeo Id</TH>
                       <TH>Views</TH>
+                      <TH></TH>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,6 +39,9 @@ export default function Teacher({ videos, teacher }) {
                           <TD>{video.title}</TD>
                           <TD>{video.vimeo_video_id}</TD>
                           <TD>858</TD>
+                          <TD>
+                            <Link href={`/video/${video.id}`}>show detail</Link>
+                          </TD>
                         </tr>
                       )
                     })}
@@ -90,7 +92,7 @@ const TABLE = styled.table`
 `
 
 const TH = styled.th`
-  ${tw`w-1/4 text-left p-4`};
+  ${tw`w-1/5 text-left p-4`};
 `
 
 const TD = styled.td`
