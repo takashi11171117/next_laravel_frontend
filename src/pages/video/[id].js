@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Player from '@vimeo/player'
 import { useRouter } from 'next/router'
 import { useVideo } from '@/hooks/video'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import DefaultLayout from '@/components/Layouts/DefaultLayout'
 import tw, { styled } from 'twin.macro'
 
 export default function Teacher({ video }) {
@@ -27,7 +27,7 @@ export default function Teacher({ video }) {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Teacher</HeaderHeadline>}>
+      <DefaultLayout header={<HeaderHeadline>Teacher</HeaderHeadline>}>
         <Content>
           <Card>
             {video?.title && (
@@ -56,7 +56,7 @@ export default function Teacher({ video }) {
             )}
           </Card>
         </Content>
-      </GuestLayout>
+      </DefaultLayout>
     </>
   )
 }

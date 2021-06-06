@@ -37,7 +37,7 @@ const Navigation = ({ user }) => {
           </div>
 
           {/* Settings Dropdown */}
-          {user && (
+          {user ? (
             <div className="hidden sm:flex sm:items-center sm:ml-6">
               <Dropdown
                 align="right"
@@ -59,8 +59,19 @@ const Navigation = ({ user }) => {
                 }
               >
                 {/* Authentication */}
+                <DropdownButton onClick={() => router.push('/dashboard')}>Dashboard</DropdownButton>
+                <DropdownButton onClick={() => router.push('/payment')}>Payment</DropdownButton>
                 <DropdownButton onClick={logout}>Logout</DropdownButton>
               </Dropdown>
+            </div>
+          ) : (
+            <div className="hidden sm:flex sm:items-center sm:ml-6">
+              <NavLink href="/register" active={router.pathname == '/register'}>
+                Register
+              </NavLink>
+              <NavLink href="/login" active={router.pathname == '/login'}>
+                Login
+              </NavLink>
             </div>
           )}
 

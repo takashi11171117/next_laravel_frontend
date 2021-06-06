@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useTeacher } from '@/hooks/teacher'
 import { useVideo } from '@/hooks/video'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import DefaultLayout from '@/components/Layouts/DefaultLayout'
 import tw, { styled } from 'twin.macro'
 
 export default function Teacher({ videos, teacher }) {
@@ -11,7 +11,7 @@ export default function Teacher({ videos, teacher }) {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Teacher</HeaderHeadline>}>
+      <DefaultLayout header={<HeaderHeadline>Teacher</HeaderHeadline>}>
         <Content>
           <Card>
             {teacher?.name && <h2 className="pb-3 text-lg">{teacher.name}</h2>}
@@ -51,7 +51,7 @@ export default function Teacher({ videos, teacher }) {
             )}
           </Card>
         </Content>
-      </GuestLayout>
+      </DefaultLayout>
     </>
   )
 }

@@ -11,7 +11,7 @@ export default function Teachers({ teachers }) {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Teachers</HeaderHeadline>}>
+      <DefaultLayout header={<HeaderHeadline>Teachers</HeaderHeadline>}>
         <Content>
           <Card>
             <h2 className="pb-3 text-lg">All Teachers</h2>
@@ -46,7 +46,7 @@ export default function Teachers({ teachers }) {
             )}
           </Card>
         </Content>
-      </GuestLayout>
+      </DefaultLayout>
     </>
   )
 }

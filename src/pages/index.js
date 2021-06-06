@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { useTeacher } from '@/hooks/teacher'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import DefaultLayout from '@/components/Layouts/DefaultLayout'
 import tw, { styled } from 'twin.macro'
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Home</HeaderHeadline>}>
+      <DefaultLayout header={<HeaderHeadline>Home</HeaderHeadline>}>
         <Content>
           <Card>
             <h2 className="pb-3 text-lg">Popular Teachers</h2>
@@ -40,7 +40,7 @@ export default function Home() {
             </Grid>
           </Card>
         </Content>
-      </GuestLayout>
+      </DefaultLayout>
     </>
   )
 }

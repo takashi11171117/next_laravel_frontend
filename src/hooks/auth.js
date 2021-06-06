@@ -85,8 +85,8 @@ export const useAuth = ({ middleware } = {}) => {
   }
 
   useEffect(() => {
-    if (middleware == 'guest' && user) router.push('/dashboard')
-    if (middleware == 'auth' && error) router.push('/login')
+    // if (middleware == 'guest' && user) router.push('/dashboard')
+    // if (middleware == 'auth' && error) router.push('/login')
   }, [user, error])
 
   return {

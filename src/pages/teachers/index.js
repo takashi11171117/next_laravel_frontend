@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTeacher } from '@/hooks/teacher'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import DefaultLayout from '@/components/Layouts/DefaultLayout'
 import Pagination from '@/components/Pagination'
 import tw, { styled } from 'twin.macro'
 
@@ -13,7 +14,7 @@ export default function TeachersHome({ teachers }) {
       <Head>
         <title>Laravel</title>
       </Head>
-      <GuestLayout header={<HeaderHeadline>Teachers</HeaderHeadline>}>
+      <DefaultLayout header={<HeaderHeadline>Teachers</HeaderHeadline>}>
         <Content>
           <Card>
             <h2 className="pb-3 text-lg">All Teachers</h2>
@@ -24,12 +25,16 @@ export default function TeachersHome({ teachers }) {
                 <Grid>
                   {teachers.data.map((teacher) => {
                     return (
-                      <div key={teacher.id}>
-                        <div>
-                          <img src={teacher.image} />
-                        </div>
-                        <p>{teacher.name}</p>
-                      </div>
+                      <Link href={`/teacher/${teacher.name}`}>
+                        <a>
+                          <div key={teacher.id}>
+                            <div>
+                              <img src={teacher.image} />
+                            </div>
+                            <p>{teacher.name}</p>
+                          </div>
+                        </a>
+                      </Link>
                     )
                   })}
                 </Grid>
@@ -44,7 +49,7 @@ export default function TeachersHome({ teachers }) {
             )}
           </Card>
         </Content>
-      </GuestLayout>
+      </DefaultLayout>
     </>
   )
 }
